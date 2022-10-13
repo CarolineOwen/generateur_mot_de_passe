@@ -19,9 +19,10 @@ namespace formationC
                 return nombre;
             }
             Console.WriteLine($"Le nombre doit être supérieur à 0 ");
+            Console.WriteLine();
             return DemanderNombrePositifNonNul(question);
         }
-        public static int DemanderNombreEntre(string question, int min, int max)
+        public static int DemanderNombreEntre(string question, int min, int max, string messageErreurPerso= null)
         {
             while (true)
             {
@@ -30,8 +31,15 @@ namespace formationC
                 {
                     return nombre;
                 }
-                Console.WriteLine($"Le nombre doit être compris entre {min} et {max} ");
-
+                if (messageErreurPerso == null)
+                {
+                    Console.WriteLine($"Le nombre doit être compris entre {min} et {max} ");
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine(messageErreurPerso);
+                }
             }
 
         }
@@ -50,6 +58,7 @@ namespace formationC
                 catch
                 {
                     Console.WriteLine("Veuillez choisir un nombre au format valide");
+                    Console.WriteLine( );
                 }
 
             }

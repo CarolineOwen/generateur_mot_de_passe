@@ -21,7 +21,7 @@ namespace generateur_de_mot_de_passe // Note: actual namespace depends on the pr
                 "3/ des lettres et des chiffres \n" +
                 "4/ des lettres, des chiffres et des caractères spéciaux \n" +
                 "Votre choix: ", 1, 4);
-
+            Console.WriteLine();
             string minuscules = "abcdefghijklmnopqrstuvwxyz";
             string majuscules = minuscules.ToUpper();
             string chiffres = "123456789";
