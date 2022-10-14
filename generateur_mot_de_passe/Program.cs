@@ -2,6 +2,7 @@
 
 using formationC;
 using System;
+using System.Globalization;
 
 namespace generateur_de_mot_de_passe // Note: actual namespace depends on the project name.
 {
@@ -10,7 +11,7 @@ namespace generateur_de_mot_de_passe // Note: actual namespace depends on the pr
 
         static void Main(string[] args)
         {
-            
+
             int longueurMotDePasse = outils.DemanderNombrePositifNonNul("Quelle est la longueur du mot de passe?");
 
             Console.WriteLine();
@@ -50,21 +51,45 @@ namespace generateur_de_mot_de_passe // Note: actual namespace depends on the pr
 
             int l = alphabet.Length;
 
+            while (true) {
+                Console.WriteLine("combien de mot passe voulez vous générer?");
+                string res = Console.ReadLine();
 
-            for ( int NB_MDP= 5; NB_MDP >0; NB_MDP--)
-            {
-                mdp = "";
-                for (int i = 0; i < longueurMotDePasse; i++)
+                try
                 {
-                    int index = rand.Next(0, l);
-                    mdp += alphabet[index];
+                    int resNum = int.Parse(res);
+                    if(resNum > 0) {
+                        for (int i = 0; i < resNum; i++)
+                        {
+                            mdp = "";
+
+                            for (int j = 0; j < longueurMotDePasse; j++)
+                            {
+                                int index = rand.Next(0, l);
+                                mdp += alphabet[index];
+
+                            }
+                            Console.WriteLine($"mot de passe: {mdp}");
+
+                        }
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Le nombre doit être supérieur à 0");
+                    }
                     
                 }
+                catch
+                {
+                    Console.WriteLine("erreur");
+                }
 
-                Console.WriteLine($"mot de passe: {mdp}");
-               
             }
+
         }
+            
+        
     }
 }
 
